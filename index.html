@@ -1,138 +1,64 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- 响应式适配 -->
+    <!-- 适配移动端 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>awa...</title>
+    <title> awa... </title>
     <style>
-        /* 全局重置 + 基础样式 */
+        /* 全局重置样式，消除默认边距 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
         }
 
-        /* 页面背景：柔和纯色，护眼 */
+        /* 页面主体：柔和渐变背景 + 居中布局 */
         body {
+            /* 莫兰迪柔和渐变色调（粉→蓝） */
+            background: linear-gradient(135deg, #f8e9f0 0%, #e0f0f9 100%);
             min-height: 100vh;
-            background-color: #f5f7fa;
+            /* 弹性布局，文字垂直+水平居中 */
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            /* 字体：优雅无衬线体 */
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
             padding: 20px;
         }
 
-        /* 核心容器：仅包裹问题栏 */
-        .question-container {
-            width: 100%;
+        /* 文字容器：柔和圆角+轻微阴影+内边距 */
+        .text-box {
             max-width: 600px;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 40px 30px;
+            /* 柔和阴影，不突兀 */
+            box-shadow: 0 8px 30px rgba(180, 160, 200, 0.1);
+            /* 加载淡入动画 */
+            animation: fadeIn 1.2s ease-in-out;
         }
 
-        /* 标题：简洁提示 */
-        .title {
+        /* 核心文字样式 */
+        .soft-text {
+            font-size: clamp(1.2rem, 3vw, 2rem); /* 响应式字号 */
+            color: #5a5466; /* 柔和深灰紫，护眼不刺眼 */
+            line-height: 1.8; /* 行高舒适，易阅读 */
             text-align: center;
-            color: #333;
-            margin-bottom: 25px;
-            font-size: 22px;
-            font-weight: 500;
+            letter-spacing: 0.5px; /* 轻微字间距，更优雅 */
         }
 
-        /* 问题输入栏（核心） */
-        #question-input {
-            width: 100%;
-            height: 120px;
-            padding: 15px;
-            border: 1px solid #e1e5ee;
-            border-radius: 8px;
-            resize: none;
-            font-size: 16px;
-            color: #333;
-            outline: none;
-            transition: border 0.3s;
-            margin-bottom: 20px;
-        }
-
-        /* 输入框聚焦效果 */
-        #question-input:focus {
-            border-color: #409eff;
-            box-shadow: 0 0 0 3px rgba(64,158,255,0.1);
-        }
-
-        /* 提交按钮 */
-        #submit-btn {
-            width: 100%;
-            height: 48px;
-            background-color: #409eff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        /* 按钮悬停效果 */
-        #submit-btn:hover {
-            background-color: #338eef;
-        }
-
-        /* 提交提示文字 */
-        .tip {
-            text-align: center;
-            margin-top: 15px;
-            color: #67c23a;
-            font-size: 14px;
-            display: none;
+        /* 淡入动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="question-container">
-        <h2 class="title">I prefer hot love.Could I konw what you wanna do?</h2>
-        <!-- 核心：问题输入栏 -->
-        <textarea id="question-input" placeholder="输入你的回答"></textarea>
-        <!-- 提交按钮 -->
-        <button id="submit-btn">。。。</button>
-        <!-- 提交提示 -->
-        <div class="tip" id="tip">。。。</div>
+    <div class="text-box">
+        <!-- 你需要的文字（已修正拼写：konw → know） -->
+        <p class="soft-text">I prefer hot love. Could I know what you wanna do?</p>
     </div>
-
-    <script>
-        // 获取元素
-        const input = document.getElementById('question-input');
-        const btn = document.getElementById('submit-btn');
-        const tip = document.getElementById('tip');
-
-        // 提交功能
-        btn.addEventListener('click', function() {
-            // 去除空字符，判断是否输入内容
-            const question = input.value.trim();
-            if (!question) {
-                tip.textContent = '请输入问题内容！';
-                tip.style.color = '#f56c6c';
-                tip.style.display = 'block';
-                return;
-            }
-
-            // 模拟提交成功
-            tip.textContent = '问题提交成功！';
-            tip.style.color = '#67c23a';
-            tip.style.display = 'block';
-            
-            // 清空输入框
-            input.value = '';
-            
-            // 3秒后隐藏提示
-            setTimeout(() => {
-                tip.style.display = 'none';
-            }, 3000);
-        });
-    </script>
 </body>
 </html>

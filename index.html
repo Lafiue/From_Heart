@@ -32,10 +32,10 @@
 
         // --- 可配置区域 ---
         const texts = [
-            { content: "爱你 ♥", x: 0.5, y: 0.3, size: 28, color: "pink" },
-            { content: "♥ To my love ♥", x: 0.5, y: 0.5, size: 20, color: "rgba(255, 182, 193, 0.8)" },
-            { content: "♥", x: 0.25, y: 0.6, size: 22, color: "pink" },
-            { content: "Forever", x: 0.75, y: 0.7, size: 22, color: "pink" }
+            { content: "", x: 0.5, y: 0.3, size: 28, color: "pink" },
+            { content: "Ipreperhotlove.Idon'tknowwhatyouwannado.", x: 0.5, y: 0.5, size: 20, color: "rgba(255, 182, 193, 0.8)" },
+            { content: "", x: 0.25, y: 0.6, size: 22, color: "pink" },
+            { content: "", x: 0.75, y: 0.7, size: 22, color: "pink" }
         ];
         // --- 可配置区域结束 ---
 
@@ -90,7 +90,7 @@
                 ctx.shadowColor = this.color;
                 const size = this.size * (1 + pulse * (distToCenter / 200));
                 ctx.font = `${size}px Arial`;
-                ctx.fillText('♥', this.x, this.y);
+                ctx.fillText('?', this.x, this.y);
                 ctx.closePath();
             }
         }

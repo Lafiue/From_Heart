@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>动态爱心汇聚效果 (升级版)</title>
+    <title> awa... </title>
     <style>
         body, html {
             margin: 0;
@@ -33,7 +33,7 @@
         // --- 可配置区域 ---
         const texts = [
             { content: "", x: 0.5, y: 0.3, size: 28, color: "pink" },
-            { content: "Ipreperhotlove.Idon'tknowwhatyouwannado.", x: 0.5, y: 0.5, size: 20, color: "rgba(255, 182, 193, 0.8)" },
+            { content: "I prefer hot love.I don't know what you wanna do.", x: 0.5, y: 0.5, size: 20, color: "rgba(255, 182, 193, 0.8)" },
             { content: "", x: 0.25, y: 0.6, size: 22, color: "pink" },
             { content: "", x: 0.75, y: 0.7, size: 22, color: "pink" }
         ];
@@ -96,39 +96,9 @@
         }
 
         // ==========================================================
-        // ===== 新增：绘制巨大朦胧的背景爱心函数 =====
+        // ===== 新增：=====
         // ==========================================================
-        function drawBigHeart() {
-            const scale = Math.min(width, height) * 0.13;
-            const centerX = width / 2;
-            const centerY = height / 2;
-
-            ctx.beginPath();
-            for (let t = 0; t < Math.PI * 2; t += 0.01) {
-                const x_base = 16 * Math.pow(Math.sin(t), 3);
-                const y_base = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-                const x = x_base * scale + centerX;
-                const y = y_base * scale + centerY;
-                if (t === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
-            }
-            ctx.closePath();
-            
-            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, scale * 2);
-            gradient.addColorStop(0, 'rgba(255, 100, 150, 0.2)');
-            gradient.addColorStop(1, 'rgba(255, 20, 147, 0.05)');
-
-            ctx.fillStyle = gradient;
-            
-            ctx.shadowColor = 'rgba(255, 105, 180, 0.7)';
-            ctx.shadowBlur = 80 + Math.sin(Date.now() * 0.002) * 15;
-
-            // Missing fill() call to actually draw the heart
-            ctx.fill();
-        }
+        
 
         // ==============================================
         // ===== 缺失的核心动画逻辑 - START =====
